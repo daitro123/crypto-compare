@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>Crypto Dashboard</title>
+	</head>
+	<body>
+		<aside>
+			<header class="header__aside">
+				<h1 class="header__aside-title"><span class="green-title">crypto</span>Compare</h1>
+			</header>
+			<div class="selection-container">
+				<h2>Select</h2>
+				<div class="custom-select">
+					Main coin
+					<div class="custom-options custom-options--coins">
+						<!-- <div class="custom-options__coin">
+							<img class="custom-options__coin-logo" src="/icons/" />
+							<div class="custom-options__coin-name"></div>
+						</div> -->
+					</div>
+				</div>
+				<div class="custom-select">
+					Secondary coin
+					<div class="custom-options custom-options--coins" ss-container>
+						<!-- <div class="custom-options__coin">
+							<img class="custom-options__coin-logo" src="/icons/" />
+							<div class="custom-options__coin-name"></div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="current-mc-container">
+				<h3 class="current-mc__title">Live market cap</h3>
+				<div class="current-mc__crypto1">
+					<h5 class="current-mc__crypto1-title">Bitcoin</h5>
+					<span class="current-mc__crypto1-mc">$888,888,888,000</span>
+				</div>
+				<div class="current-mc__crypto2">
+					<h5 class="current-mc__crypto2-title">IOTA</h5>
+					<span class="current-mc__crypto2-mc">$3,888,888,000</span>
+				</div>
+			</div>
+			<div class="current-price-container">
+				<h3 class="current-price__title">Live price</h3>
+				<div class="current-price__crypto1">
+					<h5 class="current-price__crypto1-title">Bitcoin</h5>
+					<span class="current-price__crypto1-price">$8,000</span>
+				</div>
+				<div class="current-price__crypto2">
+					<h5 class="current-price__crypto2-title">IOTA</h5>
+					<span class="current-price__crypto2-price">$1.30</span>
+				</div>
+			</div>
+		</aside>
+
+		<main>
+			<header class="chart__header">
+				<h3 class="chart__title">Chart</h3>
+				<div class="ranges-container">
+					<div class="range">All</div>
+					<div class="range">Last 30 days</div>
+					<div class="range">Last 7 days</div>
+					<div class="range">24h</div>
+				</div>
+			</header>
+			<div class="chart-container">
+				<canvas id="lineChart"></canvas>
+			</div>
+		</main>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+		<script src="/data.js"></script>
+		<script src="/app.js"></script>
+	</body>
+</html>

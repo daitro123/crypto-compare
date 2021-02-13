@@ -1,0 +1,206 @@
+:root {
+	--clr-primary-dark: #0a0c38;
+	--clr-primary: rgb(50, 52, 132);
+	--clr-primary-light: #43448f;
+	--clr-primary-lightest: #f6f8ff;
+	--clr-secondary: #16c79a;
+	--clr-secondary-dark: #1aaa86;
+	--clr-terciary: #e79cc2;
+	--clr-terciary-light: rgba(246, 190, 214, 0.2);
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	display: flex;
+	height: 100vh;
+	justify-content: space-evenly;
+	align-items: center;
+	font-family: "Noto Sans KR", sans-serif;
+	background-color: white;
+	overflow: hidden;
+	color: var(--clr-primary-dark);
+}
+
+main {
+	width: 70%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+}
+
+aside {
+	width: 20%;
+	height: 90%;
+	background-color: var(--clr-primary);
+	color: white;
+	border-radius: 50px;
+	box-shadow: 5px 10px 20px 5px rgba(50, 52, 132, 0.4);
+	padding: 30px 0;
+}
+
+.green-title {
+	color: var(--clr-secondary);
+}
+
+.header__aside {
+	font-family: "Teko", sans-serif;
+	margin: 50px 0;
+	text-align: center;
+}
+
+.chart-container {
+	width: 100%;
+	height: 100%;
+	background-color: var(--clr-primary-lightest);
+	border-radius: 50px;
+	padding: 50px;
+}
+
+.chart__header {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.chart__title {
+	font-size: 24px;
+	margin: 30px;
+	color: var(--clr-primary-dark);
+}
+
+.ranges-container {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.range {
+	padding: 8px;
+	border-radius: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: all 0.2s linear;
+	color: var(--clr-primary-dark);
+}
+
+.range:hover {
+	background-color: rgba(67, 68, 143, 1);
+	color: white;
+}
+
+.selection-container {
+	padding: 30px;
+}
+
+.selection-container h2 {
+	padding: 15px 0;
+}
+
+.custom-select {
+	padding: 15px;
+	position: relative;
+	transition: all 0.4s linear;
+}
+
+.custom-select:hover {
+	background-color: var(--clr-primary-light);
+}
+
+.custom-select::after {
+	content: "\232A";
+	position: absolute;
+	right: 20px;
+}
+
+.custom-options {
+	padding: 20px;
+	max-width: 600px;
+	max-height: 600px;
+	overflow-y: scroll;
+	position: absolute;
+	right: -600px;
+	top: -150px;
+	display: none;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	opacity: 0;
+	pointer-events: none;
+	box-shadow: 10px 4px 35px rgba(0, 0, 0, 0.3);
+	background-color: var(--clr-secondary);
+	z-index: 5;
+}
+
+.custom-options__coin {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	width: 100px;
+	height: 120px;
+	text-align: center;
+	transition: all 0.3s linear;
+}
+
+.custom-options__coin:hover {
+	background-color: var(--clr-secondary-dark);
+}
+
+.custom-options__coin-name {
+	font-size: 12px;
+}
+
+.custom-options__coin-icon {
+	height: 32px;
+}
+
+.visible {
+	display: flex;
+	opacity: 1;
+	pointer-events: all;
+}
+.current-mc-container,
+.current-price-container {
+	color: white;
+	border-radius: 50px;
+	padding: 30px;
+	width: 100%;
+}
+
+.current-mc__title,
+.current-price__title {
+	padding: 10px 0;
+	margin-bottom: 10px;
+	color: var(--clr-secondary);
+}
+
+.current-mc__crypto2,
+.current-price__crypto2 {
+	margin-top: 20px;
+}
+
+.current-price__crypto1-title,
+.current-price__crypto2-title,
+.current-mc__crypto1-title,
+.current-mc__crypto2-title {
+	font-size: 16px;
+}
+
+.current-mc__crypto2,
+.current-mc__crypto1,
+.current-price__crypto2,
+.current-price__crypto1 {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
