@@ -104,6 +104,11 @@ aside {
 	color: var(--clr-primary-dark);
 }
 
+.range--active {
+	background-color: rgba(67, 68, 143, 1);
+	color: white;
+}
+
 .range:hover {
 	background-color: rgba(67, 68, 143, 1);
 	color: white;

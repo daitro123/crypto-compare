@@ -39,6 +39,7 @@ let coinsArr = [
 	},
 ];
 let lineChart;
+let range = 0;
 
 /*  Populate select crypto with currencies  */
 
@@ -132,6 +133,11 @@ function formatCurrency(value, currency, digits) {
 
 function getDates(data, data_value) {
 	let arr = data[data_value];
+
+	if (range !== 0) {
+		arr = arr.slice(-range);
+	}
+
 	let datesArr = [];
 	arr.forEach((item) => {
 		let date = new Date(item[0]);
@@ -157,6 +163,15 @@ function prepareXYData(data) {
 
 function prepareChartDataset(coinsArr) {
 	let datasetArr = [];
+	if (lineChart) lineChart.destroy(); // removes previous chart data
+
+	//copy of data
+	const marketCapsArr = [coinsArr[0].data.market_caps, coinsArr[1].data.market_caps];
+
+	if (range !== 0) {
+		marketCapsArr[0] = marketCapsArr[0].slice(-range);
+		marketCapsArr[1] = marketCapsArr[1].slice(-range);
+	}
 
 	for (let i = 0; i < coinsArr.length; i++) {
 		datasetArr[i] = {
@@ -167,8 +182,8 @@ function prepareChartDataset(coinsArr) {
 			borderColor: `${coinsArr[i].color}`,
 			borderWidth: 3,
 			pointRadius: 0,
-			lineTension: 1,
-			data: prepareXYData(coinsArr[i].data.market_caps),
+			lineTension: 0,
+			data: prepareXYData(marketCapsArr[i]),
 		};
 	}
 
@@ -274,8 +289,6 @@ async function requestData(order) {
 
 	coinsArr[order].data = data;
 
-	if (lineChart) lineChart.destroy(); // removes previous chart data
-
 	createChart(prepareChartDataset(coinsArr));
 }
 
@@ -305,6 +318,22 @@ function updateLiveData() {
 	mc2.textContent = formatCurrency(coinsArr[1].liveData.usd_market_cap, "USD", 0);
 }
 
+/* Time Range Selection */
+
+const rangesButtons = document.querySelectorAll(".range");
+
+rangesButtons.forEach((button) => {
+	button.addEventListener("click", (e) => {
+		const active = document.querySelector(".range--active");
+		range = button.dataset.range;
+		if (e.target !== active) {
+			active.classList.remove("range--active");
+			button.classList.add("range--active");
+			createChart(prepareChartDataset(coinsArr));
+		}
+	});
+});
+
 /* Initialize */
 
 requestData(0);
@@ -314,7 +343,3 @@ requestLiveData();
 // setInterval(() => {
 // 	requestLiveData();
 // }, 30000);
-
-/* Animations */
-
-const logoBounce = [{ transform: "scale(0)" }, { transform: "scale(1)" }];
