@@ -255,7 +255,7 @@ function createChart(datasetArr) {
 							fontColor: "rgba(189,189,189,0.5)",
 							padding: 15,
 							minRotation: 0,
-							maxRotation: 0,
+							maxRotation: window.innerWidth < 700 ? 75 : 0,
 							fontStyle: "bold",
 						},
 						gridLines: {
@@ -296,8 +296,6 @@ function toggleLoadingBar() {
 
 async function requestData(order) {
 	toggleLoadingBar();
-
-	console.log(coinsArr[order].id);
 
 	const request = await fetch(
 		`https://api.coingecko.com/api/v3/coins/${coinsArr[order].id}/market_chart?vs_currency=usd&days=max&interval=daily`
@@ -359,6 +357,6 @@ requestData(0);
 requestData(1);
 requestLiveData();
 
-// setInterval(() => {
-// 	requestLiveData();
-// }, 30000);
+setInterval(() => {
+	requestLiveData();
+}, 30000);
