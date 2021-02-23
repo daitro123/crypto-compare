@@ -84,13 +84,21 @@
 				<h3 class="chart__title">Market Capitalization</h3>
 				<div class="ranges-container">
 					<div class="range range--active" data-range="0">All</div>
-					<div class="range" data-range="90">Last 90 days</div>
-					<div class="range" data-range="30">Last 30 days</div>
-					<div class="range" data-range="7">Last 7 days</div>
+					<div class="range" data-range="90">3m</div>
+					<div class="range" data-range="30">1m</div>
+					<div class="range" data-range="7">7d</div>
 				</div>
 			</header>
 			<div class="chart-container">
 				<canvas id="lineChart"></canvas>
+				<div class="lds-container">
+					<div class="lds-ellipsis">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
 			</div>
 		</main>
 

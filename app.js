@@ -198,6 +198,14 @@ function createChart(datasetArr) {
 			datasets: [...datasetArr],
 		},
 		options: {
+			onResize: () => {
+				if (window.innerWidth < 700) {
+					lineChart.options.scales.xAxes[0].ticks.maxRotation = 90;
+				} else {
+					lineChart.options.scales.xAxes[0].ticks.maxRotation = 0;
+				}
+			},
+
 			maintainAspectRatio: false,
 			legend: {
 				position: "bottom",
@@ -260,15 +268,15 @@ function createChart(datasetArr) {
 						type: "time",
 						time: {
 							displayFormats: {
-								millisecond: "DD MMM YY",
-								second: "DD MMM YY",
-								minute: "DD MMM YY",
+								// millisecond: "DD MMM YY",
+								// second: "DD MMM YY",
+								// minute: "DD MMM YY",
 								hour: "DD MMM YY",
 								day: "DD MMM YY",
-								week: "DD MMM YY",
-								month: "DD MMM YY",
-								quarter: "DD MMM YY",
-								year: "DD MMM YY",
+								// week: "DD MMM YY",
+								// month: "DD MMM YY",
+								// quarter: "DD MMM YY",
+								// year: "DD MMM YY",
 							},
 						},
 					},
@@ -281,7 +289,16 @@ function createChart(datasetArr) {
 
 /* QUERY API data for one line on chart */
 
+function toggleLoadingBar() {
+	const loadingEl = document.querySelector(".lds-container");
+	loadingEl.classList.toggle("lds-container--visible");
+}
+
 async function requestData(order) {
+	toggleLoadingBar();
+
+	console.log(coinsArr[order].id);
+
 	const request = await fetch(
 		`https://api.coingecko.com/api/v3/coins/${coinsArr[order].id}/market_chart?vs_currency=usd&days=max&interval=daily`
 	);
@@ -290,6 +307,8 @@ async function requestData(order) {
 	coinsArr[order].data = data;
 
 	createChart(prepareChartDataset(coinsArr));
+
+	toggleLoadingBar();
 }
 
 /* QUERY API live */
