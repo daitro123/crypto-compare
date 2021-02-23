@@ -295,18 +295,24 @@ function toggleLoadingBar() {
 }
 
 async function requestData(order) {
-	toggleLoadingBar();
+	try {
+		toggleLoadingBar();
 
-	const request = await fetch(
-		`https://api.coingecko.com/api/v3/coins/${coinsArr[order].id}/market_chart?vs_currency=usd&days=max&interval=daily`
-	);
-	const data = await request.json();
+		const request = await fetch(
+			`https://api.coingecko.com/api/v3/coins/${coinsArr[order].id}/market_chart?vs_currency=usd&days=max&interval=daily`
+		);
 
-	coinsArr[order].data = data;
+		const data = await request.json();
 
-	createChart(prepareChartDataset(coinsArr));
+		coinsArr[order].data = data;
 
-	toggleLoadingBar();
+		createChart(prepareChartDataset(coinsArr));
+
+		toggleLoadingBar();
+	} catch (error) {
+		alert("An error has occured when fetching data");
+		console.log(error);
+	}
 }
 
 /* QUERY API live */
