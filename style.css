@@ -143,7 +143,7 @@ aside {
 
 .custom-options {
 	padding: 20px;
-	max-width: 600px;
+	width: 600px;
 	max-height: 600px;
 	overflow-y: scroll;
 	position: absolute;
@@ -332,7 +332,7 @@ aside {
 
 	.custom-options {
 		bottom: 0;
-		right: 600px;
+		right: 0px;
 		transform: translateY(100%);
 	}
 
@@ -349,9 +349,9 @@ aside {
 	}
 }
 
-@media (max-width: 900px) {
+@media (max-width: 750px) {
 	.custom-options {
-		min-width: 290px;
+		width: 290px;
 		right: 0px;
 	}
 }
