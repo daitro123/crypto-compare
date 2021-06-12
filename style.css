@@ -139,24 +139,24 @@ aside {
 	padding: 15px 0;
 }
 
-.custom-select {
+.select {
 	padding: 15px;
 	position: relative;
 	transition: all 0.4s linear;
 	cursor: pointer;
 }
 
-.custom-select:hover {
+.select:hover {
 	background-color: var(--clr-primary-light);
 }
 
-.custom-select::after {
+.select::after {
 	content: "\232A";
 	position: absolute;
 	right: 20px;
 }
 
-.custom-options {
+.options {
 	padding: 20px;
 	width: 600px;
 	max-height: 600px;
@@ -174,7 +174,7 @@ aside {
 	z-index: 5;
 }
 
-.custom-options__coin {
+.options__coin {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -186,15 +186,15 @@ aside {
 	transition: all 0.3s linear;
 }
 
-.custom-options__coin:hover {
+.options__coin:hover {
 	background-color: var(--clr-secondary-dark);
 }
 
-.custom-options__coin-name {
+.options__coin-name {
 	font-size: 12px;
 }
 
-.custom-options__coin-icon {
+.options__coin-icon {
 	height: 32px;
 }
 
@@ -240,6 +240,18 @@ aside {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.black {
+	color: black;
 }
 
 .lds-container {
@@ -346,7 +358,7 @@ aside {
 		margin-top: 30px;
 	}
 
-	.custom-options {
+	.options {
 		max-height: 400px;
 		bottom: 0;
 		top: auto;
@@ -354,7 +366,7 @@ aside {
 		transform: translateY(100%);
 	}
 
-	.custom-select::after {
+	.select::after {
 		transform: rotate(90deg);
 	}
 
@@ -368,7 +380,7 @@ aside {
 }
 
 @media (max-width: 750px) {
-	.custom-options {
+	.options {
 		width: 100%;
 		right: 0px;
 		top: 65px;
